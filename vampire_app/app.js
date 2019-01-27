@@ -89,6 +89,22 @@ Vampire.create({
 /////////////////////////////////////////////////
 // ### Select with OR
 
+ // Are from New York, New York, US or New Orleans, Louisiana, US:
+ 	db.vampires.find({ $or: [{location: "New York, New York, US"}, {location: "New Orleans, Louisiana, US"}] })
+
+ // Love brooding or being tragic:
+ 	db.vampires.find({ $or: [{loves: "brooding"}, {loves: "being tragic"}] })
+
+ // Have more than 1000 victims or love marshmallows:
+  	db.vampires.find({ $or: [{victims: {$gt: 1000}}, {loves: "marshmallows"}] })
+
+ // Have red hair or green eyes:
+ 	db.vampires.find({ $or: [{hair_color: "red"}, {eye_color: "green"}] })
+
+
+
+
+
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
 
