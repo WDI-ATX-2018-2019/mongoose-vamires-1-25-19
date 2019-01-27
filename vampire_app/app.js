@@ -64,8 +64,27 @@ Vampire.create({
  // Have greater than 150 AND fewer than 500 victims:
 		db.vampires.find({ $and: [{victims: {$gt: 150} }, {victims: {$lt: 500}}] })
 
+
+
+
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
+	
+ // Have a title property:
+ 	db.vampires.find({ title: {$exists: true} })
+ 
+ // Do not have a victims property:
+ 	db.vampires.find({ victims: {$exists: false} })	 
+
+ // Have a title AND no victims:
+ 	db.vampires.find({ $and: [{ title: {$exists: true}}, { victims: {$exists: false}}] })
+ 
+ // Have victims AND the victims they have are greater than 1000:
+ 	db.vampires.find({ $and: [{ victims: {$exists: true}}, {victims: {$gt: 1000}}] })
+
+
+
+
 
 /////////////////////////////////////////////////
 // ### Select with OR
