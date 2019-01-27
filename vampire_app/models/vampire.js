@@ -1,13 +1,29 @@
+
 const mongoose = require('mongoose')
 
 const VampireSchema = new mongoose.Schema({
-	name: 'Count Chocula',
-	hair_color: 'brown',
-	eye_color: 'brown',
-	dob: new Date(1971, 2, 13, 7, 47),
-	loves: ['cereal','marshmallows'],
-	location: 'Minneapolis, Minnesota, US',
-	gender: 'm',
-	victims: 2
-	
+	name: {
+		type: String,
+		required: true
+		},
+	hair_color: {
+		type: String,
+		default: 'Blonde'
+		},
+	eye_color: String,
+	dob: Date,
+	loves: [String],
+	location: String,
+	gender: String,
+	victims: {
+		type: Number,
+		min: 1,
+		max: 1000000
+		}
 })
+
+
+const VampireModel = mongoose.model('Vampire', VampireSchema)
+
+module.exports = VampireModel
+

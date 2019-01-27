@@ -1,8 +1,15 @@
 // 1. Require your node modules
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost:27017/Jamal', { newUrlParser: true} )
+
 
 // 2. Require your model (and possibly your extra data source);
+const Vampire = require('./models/vampire.js')
 
 // 3. Connect your database and collection name
+
+
+
 
 // 4. Open your mongoose connection
 
