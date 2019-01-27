@@ -8,7 +8,7 @@ const VampireSchema = new mongoose.Schema({
 		},
 	hair_color: {
 		type: String,
-		default: 'Blonde'
+		default: 'blonde'
 		},
 	eye_color: String,
 	dob: Date,

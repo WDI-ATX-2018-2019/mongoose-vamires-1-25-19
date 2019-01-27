@@ -1,17 +1,18 @@
 // 1. Require your node modules
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/Jamal', { newUrlParser: true} )
-
 
 // 2. Require your model (and possibly your extra data source);
 const Vampire = require('./models/vampire.js')
+const vampireDb = require('./populateVampires.js')
 
 // 3. Connect your database and collection name
-
-
-
+mongoose.connect('mongodb://localhost:27017/Vampires', { newUrlParser: true} )
 
 // 4. Open your mongoose connection
+database = mongoose.connection
+database.on("open", ()=> {
+  console.log("Connected")
+})
 
 /////////////////////////////////////////////////
 //Write your answers to add, query, update, remove, and Hungry for More below.
