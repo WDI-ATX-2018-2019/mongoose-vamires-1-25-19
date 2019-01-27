@@ -16,7 +16,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "chai": "^4.2.0",
-    "mocha": "^5.2.0"
-  }
+    "mocha": "^5.2.0",
+    "mongoose": "^5.4.7",
+    "validator": "^10.11.0"
+  },
+  "keywords": []
 }
