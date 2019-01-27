@@ -6,7 +6,7 @@ const Vampire = require('./models/vampire.js')
 const vampireData = require('./populateVampires.js')
 
 // 3. Connect your database and collection name
-mongoose.connect('mongodb://localhost:27017/Vampires', { newUrlParser: true} )
+mongoose.connect('mongodb://localhost:27017/Vampires', { useNewUrlParser: true} )
 
 // 4. Open your mongoose connection
 database = mongoose.connection
@@ -31,22 +31,38 @@ Vampire.collection.insertMany(vampireData, (err, data) => {
 // ### Add some new vampire data
 Vampire.create({
     name: 'Alucard',
-    hair_color: ,
+    hair_color: 'blonde',
     eye_color: 'blue',
     dob: new Date(1730, 9, 22, 0, 55),
     loves: ['sleep','read', 'blood'],
     location: 'France, Versailles, EU',
     gender: 'm',
     victims: 5
-  }, function (err, small) {
+  }, function (err, name) {
   if (err) return handleError(err);
 });
+
 
 
 /////////////////////////////////////////////////
 // ## QUERYING
 /////////////////////////////////////////////////
 // ### Select by comparison
+
+ // Find all the vampires that that are females:
+ 		db.vampires.find({ gender: "f" })
+
+ // Have greater than 500 victims:
+ 		db.vampires.find({ victims: {$gt: 500} })
+
+ // Have fewer than or equal to 150 victims:
+ 		db.vampires.find({ victims: {$lte: 150} })
+
+ // Have a victim count is not equal to 210234:
+ 		db.vampires.find({ victims: {$ne: 210234} })
+
+ // Have greater than 150 AND fewer than 500 victims:
+		db.vampires.find({ $and: [{victims: {$gt: 150} }, {victims: {$lt: 500}}] })
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
