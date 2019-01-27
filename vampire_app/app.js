@@ -66,7 +66,11 @@ vampireModel.insertMany(newVampires, function(error, docs) {});
 // ## QUERYING
 /////////////////////////////////////////////////
 // ### Select by comparison
-
+vampireModel.find({gender: 'f'})
+vampireModel.find({victims: >500})
+vampireModel.find({victims: <= 150})
+vampireModel.find({victims: != 210234})
+vampireModel.find({victims: >150 && <500})
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
 
