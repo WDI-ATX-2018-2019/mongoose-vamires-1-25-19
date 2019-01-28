@@ -1,7 +1,10 @@
 // 1. Require your node modules
-
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const myDb = 'mongodb://localhost:27017/companyDb'
+let db = mongoose.connection;
 // 2. Require your model (and possibly your extra data source);
-
+const vampires = require('./models/vampire')
 // 3. Connect your database and collection name
 
 // 4. Open your mongoose connection
