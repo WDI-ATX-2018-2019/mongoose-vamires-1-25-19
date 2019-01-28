@@ -67,10 +67,10 @@ vampireModel.insertMany(newVampires, function(error, docs) {});
 /////////////////////////////////////////////////
 // ### Select by comparison
 vampireModel.find({gender: 'f'})
-.find({victims: { $gt: 500}})
-.find({victims: { $lte: 150}})
-.find({victims: != 210234})
-.find({victims: { $gt: 150} && {$lt: 500}})
+.find({victims: {$gt: 500}})
+.find({victims: {$lte: 150}})
+.find({victims: {$ne 210234}})
+.find({ $and: [{victims: {$gt: 150} }, {victims: {$lt: 500}}] })
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
 vampireModel.find({title: {$exists: true}})
@@ -92,7 +92,10 @@ vampireModel.find().or([{ loves: { 'appearing innocent' }}, { loves: { 'trickery
 
 /////////////////////////////////////////////////
 //### Negative Selection
-
+vampireModel.find($and:[{loves: 'ribbons'}, {eye_color: {$not: {'brown'}}})
+vampireModel.find({location: {$not: {'Rome'}}})
+vampireModel.find({loves: {$not: {'fancy cloaks', 'frilly shirtsleeves', 'appearing innocent', 'being tragic', 'brooding'}}})
+vampireModel.find({victims: {$not: {200}}})
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REPLACE
