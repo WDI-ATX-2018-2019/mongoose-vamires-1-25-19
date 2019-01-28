@@ -67,7 +67,7 @@ vampireModel.insertMany(newVampires, function(error, docs) {});
 /////////////////////////////////////////////////
 // ### Select by comparison
 vampireModel.find({gender: 'f'})
-.find({victims: {$gt: 500}})
+            .find({victims: {$gt: 500}})
 .find({victims: {$lte: 150}})
 .find({victims: {$ne 210234}})
 .find({ $and: [{victims: {$gt: 150} }, {victims: {$lt: 500}}] })
@@ -110,7 +110,14 @@ vampireModel.findOneAndUpdate(
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## UPDATE
-
+vampireModel.findOneAndUpdate(
+  { name: 'Eva' },
+  { $set: { gender: 'm' }, {name: 'moniker'} }, 
+  { new : true }, 
+  (err, article)=>{
+    console.log(vampireModel);
+  });
+});
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REMOVE
