@@ -3,15 +3,19 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const vampire = require('./models/vampire')
-const port = 5000
+const port = 6000
 let app = express()
 // 2. Require your model (and possibly your extra data source);
-let vampires = require('./populateVampires.js')
+let vampireData = require('./populateVampires.js')
 // 3. Connect your database and collection name
-mongoose.connect('mongodb://localhost:27017/')
-// 4. Open your mongoose connection
+mongoose.connect('mongodb://localhost:27017/VampData',{ useNewUrlParser: true })
+// 4. Open your mongoosbe connection
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+database = mongoose.connection
+database.on("open",()=>{
+	console.log("connected")
+})
 /////////////////////////////////////////////////
 //Write your answers to add, query, update, remove, and Hungry for More below.
 
@@ -20,7 +24,7 @@ app.use(bodyParser.json())
 /////////////////////////////////////////////////
 // INSERT USING MONGOOSE
 // ### Add the vampire data that we gave you
-vampire.collection.insertMany(vampires, (err, data) => {
+vampire.collection.insertMany(vampireData, (err, data) => {
   console.log("added provided vampire data")
   mongoose.connection.close();
 });
@@ -66,7 +70,9 @@ let newVampires = [{
     victims: 324
 	}
 ]
-vampire.insertMany(newVampires,function(err,docs) {});
+vampire.insertMany(newVampires).then( docs => {
+	console.log(docs)
+})
 /////////////////////////////////////////////////
 // ## QUERYING
 /////////////////////////////////////////////////
@@ -107,6 +113,6 @@ vampire.insertMany(newVampires,function(err,docs) {});
 //## Negative Selection
 
 /////////////////////////////////////////////////
-app.listen(port, ()=>{
-	console.log("Onnnn Son")
-})
+// app.listen(port, ()=>{
+// 	console.log("Onnnn Son")
+// })

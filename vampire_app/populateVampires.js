@@ -1,4 +1,4 @@
-module.exports = [
+let vampireData = [
   {
     name: 'Count Chocula',
     hair_color: 'brown',
@@ -136,3 +136,4 @@ module.exports = [
     title: 'Osiris of Sewer Rats'
   }
 ]
+module.exports = vampireData

@@ -1,5 +1,5 @@
 let mongoose = require('mongoose')
-let vampireSchema = mongoose.Schema({
+let vampireSchema = new mongoose.Schema({
 	name: {
 		type: String,
 		required: true
