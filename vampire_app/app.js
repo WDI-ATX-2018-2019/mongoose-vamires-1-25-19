@@ -4,11 +4,11 @@ const Vampire = require('./models/vampire')
 
 // 2. Require your model (and possibly your extra data source);
 
-// let vampires = require('./populateVampires.js')
+let vampires = require('./populateVampires.js')
 
 // // 3. Connect your database and collection name
 
-// mongoose.connect('mongodb://localhost:27017/')
+mongoose.connect('mongodb://localhost:27017/')
 
 // // 4. Open your mongoose connection
 
@@ -26,49 +26,45 @@ const Vampire = require('./models/vampire')
 
 // ### Add some new vampire data
 
-vampire.insertMany(
+Vampire.insertMany(
 	[{
 		name: 'Joe',
-		age: 456,
 		gender: 'male',
 		victims: 9999,
 		hair_color: 'blue',
 		eye_color: 'black',
-		dob: 1678,
-		loves: 'food',
+		dob: new Date(),
+		loves: ['food'],
 		location: 'New York'
 	},
 	{
 		name: 'Susie',
-		age: 124,
-		gender: 'female'
+		gender: 'female',
 		victims: 453,
 		hair_color: 'orange',
 		eye_color: 'red',
-		dob: 1845,
-		loves: 'baseball',
+		dob: new Date(),
+		loves: ['baseball'],
 		location: 'Chicago'
 	},
 	{
 		name: 'Bob',
-		age: 984,
-		gender: 'male'
+		gender: 'male',
 		victims: 18,
 		hair_color: 'green',
 		eye_color: 'yellow',
-		dob: 1234,
-		loves: 'the beach',
+		dob: new Date(),
+		loves: ['the beach'],
 		location: 'San Fransico'
 	},
 	{
 		name: 'Cheryl',
-		age: 33,
-		gender: 'female'
+		gender: 'female',
 		victims: 678,
 		hair_color: 'brown',
 		eye_color: 'green',
-		dob: 1986,
-		loves: 'silverware',
+		dob: new Date(),
+		loves: ['silverware'],
 		location: 'Austin'
 	}]
 )
@@ -77,6 +73,22 @@ vampire.insertMany(
 // ## QUERYING
 /////////////////////////////////////////////////
 // ### Select by comparison
+
+// Vampire.find({ gender: 'female' }).then(vampire => {
+// 	console.log(vampire)
+// })
+
+// Vampire.find({ victims: { $gt: 500 }}).then(vampire => {
+// 	console.log(vampire)
+// })
+
+// Vampire.find({ victims: { $lte: 150 }}).then(vampire => {
+// 	console.log(vampire)
+// })
+
+// Vampire.find( { victims: { $ne: 210234 }}).then(vampire => {
+// 	console.log(vampire)
+// })
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
