@@ -108,6 +108,44 @@ Vampire.create({
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
 
+ // Love either frilly shirtsleeves or frilly collars:
+ 	Article.findOne({ $or: [
+ 		{ loves: "frilly shirtsleeves" }, 
+ 		{ loves: "frilly collars" }
+ 		]}, (err, article)=> {
+ 			console.log(article);
+ 	});
+
+ // Love brooding:
+ 	Article.findOne({ loves: "brooding" }, 
+  		(err, article)=> {
+ 			console.log(article);
+ 	});
+ 
+ // Love at least one of the following: appearing innocent, trickery, lurking in rotting mansions, R&B music:
+ 	Article.findOne({ $or: [
+ 		{ loves: "appearing innocent" }, 
+ 		{ loves: "trickery" },
+ 		{ loves: "lurking in rotting mansions"},
+ 		{ loves:  "R&B music"}
+ 		]}, (err, article)=> {
+ 				console.log(article);
+ 			}
+ 	);
+
+ // Love fancy cloaks but not if they also love either top hats or virgin blood * Hint-You will also have to use $nin *:
+ 	Article.findOne({ $and: [
+ 		{ loves: "fancy cloaks"}, 
+ 		{ $nin: [
+ 			{ loves: "top hats"},
+ 			{ loves: "virgin blood"}
+ 			]},
+ 		]}, (err, article)=>{
+ 				console.log(article);
+ 		}
+ 	);
+
+
 /////////////////////////////////////////////////
 //### Negative Selection
 
