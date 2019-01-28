@@ -139,15 +139,50 @@ Vampire.create({
  		{ $nin: [
  			{ loves: "top hats"},
  			{ loves: "virgin blood"}
- 			]},
+ 			]}
  		]}, (err, article)=>{
  				console.log(article);
  		}
  	);
 
 
+
+
 /////////////////////////////////////////////////
 //### Negative Selection
+	
+	
+ // Love ribbons but do not have brown eyes
+ 	Article.findOne({ $and: [
+ 		{ loves: "ribbons"},
+ 		{ eye_color: { $ne : "bown"}}
+ 	]}, (err, article)=> {
+ 			console.log(article);
+ 		}
+ 	);
+
+ // Are not from Rome
+ 	Article.finOne({location: { $ne: "Rome"}}, 
+ 		(err, article)=> {
+ 			console.log(article);
+ 		});
+
+ // Do not love any of the following: [fancy cloaks, frilly shirtsleeves, appearing innocent, being tragic, brooding]
+ 	db.vampires.find({$nin: [
+ 		{loves: "fancy cloaks"},
+ 		{loves: "frilly shirtsleeves"},
+ 		{loves: "appearing innocent"},
+ 		{loves: "being tragic"},
+ 		{loves: "brooding"}
+ 		]}
+ 	)
+ 		
+
+ // Have not killed more than 200 people
+
+
+
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
