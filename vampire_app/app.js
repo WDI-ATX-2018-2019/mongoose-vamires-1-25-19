@@ -26,29 +26,52 @@ const Vampire = require('./models/vampire')
 
 // ### Add some new vampire data
 
-vampire.create(
-	{
+vampire.insertMany(
+	[{
 		name: 'Joe',
 		age: 456,
-		gender: 'male'
+		gender: 'male',
+		victims: 9999,
+		hair_color: 'blue',
+		eye_color: 'black',
+		dob: 1678,
+		loves: 'food',
+		location: 'New York'
 	},
 	{
 		name: 'Susie',
 		age: 124,
 		gender: 'female'
+		victims: 453,
+		hair_color: 'orange',
+		eye_color: 'red',
+		dob: 1845,
+		loves: 'baseball',
+		location: 'Chicago'
 	},
 	{
 		name: 'Bob',
 		age: 984,
 		gender: 'male'
+		victims: 18,
+		hair_color: 'green',
+		eye_color: 'yellow',
+		dob: 1234,
+		loves: 'the beach',
+		location: 'San Fransico'
 	},
 	{
 		name: 'Cheryl',
 		age: 33,
 		gender: 'female'
-	}
+		victims: 678,
+		hair_color: 'brown',
+		eye_color: 'green',
+		dob: 1986,
+		loves: 'silverware',
+		location: 'Austin'
+	}]
 )
-
 
 /////////////////////////////////////////////////
 // ## QUERYING
