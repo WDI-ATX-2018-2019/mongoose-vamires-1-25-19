@@ -39,55 +39,103 @@ db.once('open', function() {
     //   mongoose.connection.close();
     // });
     // ### Add some new vampire data
-    Vampire.create({
-        name: "Claire Redfield",
-        hair_color: "maroon",
-        eye_color: "blue",
-        dob: new Date(1979, 1, 1, 7, 47),
-        loves: ['knives', 'sherry'],
-        location: 'Raccoon City, Somewhere, US',
-        gender: 'f',
-        victims: 121
-    }, {
-        name: "Jill Valentine",
-        hair_color: "brown",
-        eye_color: "hazel",
-        dob: new Date(1974, 1, 1, 7, 47),
-        loves: ['knives', 'Chris'],
-        location: 'Raccoon City, Somewhere, US',
-        gender: 'f',
-        victims: 121
-    }, {
-        name: "Leon Kennedy",
-        hair_color: "dirty blonde",
-        eye_color: "green",
-        dob: new Date(1977, 1, 1, 7, 47),
-        loves: ['rifles', 'Claire'],
-        location: 'Raccoon City, Somewhere, US',
-        gender: 'm',
-        victims: 121
-    }, {
-        name: "Chris Redfield",
-        hair_color: "brown",
-        eye_color: "blue",
-        dob: new Date(1973, 1, 1, 7, 47),
-        loves: ['guns', 'Jill'],
-        location: 'Raccoon City, Somewhere, US',
-        gender: 'm',
-        victims: 121
-    })
-    .then(()=> {
-    	console.log("Four new vampires added successfully")
-    })
-    .catch(error => {
-    	console.log(`Error adding vampires: ${error.message}`)
-    })
+
+    // Vampire.create({
+    //     name: "Claire Redfield",
+    //     hair_color: "maroon",
+    //     eye_color: "blue",
+    //     dob: new Date(1979, 1, 1, 7, 47),
+    //     loves: ['knives', 'sherry'],
+    //     location: 'Raccoon City, Somewhere, US',
+    //     gender: 'f',
+    //     victims: 121
+    // }, {
+    //     name: "Jill Valentine",
+    //     hair_color: "brown",
+    //     eye_color: "hazel",
+    //     dob: new Date(1974, 1, 1, 7, 47),
+    //     loves: ['knives', 'Chris'],
+    //     location: 'Raccoon City, Somewhere, US',
+    //     gender: 'f',
+    //     victims: 121
+    // }, {
+    //     name: "Leon Kennedy",
+    //     hair_color: "dirty blonde",
+    //     eye_color: "green",
+    //     dob: new Date(1977, 1, 1, 7, 47),
+    //     loves: ['rifles', 'Claire'],
+    //     location: 'Raccoon City, Somewhere, US',
+    //     gender: 'm',
+    //     victims: 121
+    // }, {
+    //     name: "Chris Redfield",
+    //     hair_color: "brown",
+    //     eye_color: "blue",
+    //     dob: new Date(1973, 1, 1, 7, 47),
+    //     loves: ['guns', 'Jill'],
+    //     location: 'Raccoon City, Somewhere, US',
+    //     gender: 'm',
+    //     victims: 121
+    // })
+    // .then(()=> {
+    // 	console.log("Four new vampires added successfully")
+    // 	mongoose.connection.close();
+
+    // })
+    // .catch(error => {
+    // 	console.log(`Error adding vampires: ${error.message}`)
+    // 	mongoose.connection.close();
+    // })
 
 
     /////////////////////////////////////////////////
     // ## QUERYING
     /////////////////////////////////////////////////
     // ### Select by comparison
+
+// Read: all the vampires that that are females
+    // Vampire.find({ gender: 'f' }, (error, vampire) => {
+    //     if (error) return handleError(error)
+    //     console.log('%s', vampire)
+    //     mongoose.connection.close();
+    // })
+
+// Read: all vampires that have greater than 500 victims
+    // Vampire.find((error, vampire) => {
+    //     if (error) return handleError(error)
+    //     console.log('%s', vampire)
+    //     mongoose.connection.close();
+    // }).
+    // where('victims').
+    // gt(500)
+
+// Read: all vampires that have fewer than or equal to 150 victims
+	// Vampire.find((error, vampire) => {
+	// 	if (error) return handleError(error)
+	// 		console.log(vampire)
+	// 	mongoose.connection.close();
+	// }).
+	// where('victims').
+	// lte(150)
+
+// Read: all vampires that have a victim count is not equal to 210234
+	// Vampire.find((error, vampire) => {
+	// 	if (error) return handleError(error)
+	// 		console.log(vampire)
+	// 	mongoose.connection.close();
+	// }).
+	// where('victims').
+	// ne(210234)
+
+// Read: all vampires that have greater than 150 AND fewer than 500 victims
+	// Vampire.find((error, vampire) => {
+	// 	if (error) return handleError(error)
+	// 		console.log(vampire)
+	// 	mongoose.connection.close();
+	// }).
+	// where('victims').
+	// gt(150).
+	// lt(500)
 
     /////////////////////////////////////////////////
     // ### Select by exists or does not exist
