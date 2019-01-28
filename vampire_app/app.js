@@ -73,7 +73,10 @@ vampireModel.find({victims: != 210234})
 vampireModel.find({victims: >150 && <500})
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
-
+vampireModel.find({title: {$exists: true}})
+vampireModel.find({victims: {$exists: false}})
+vampireModel.find({title: {$exists: true}}, && {victims: {$exists: false}})
+vampireModel.find({victims: {$exists: true && >1000}})
 /////////////////////////////////////////////////
 // ### Select with OR
 
