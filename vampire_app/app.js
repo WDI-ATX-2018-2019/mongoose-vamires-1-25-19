@@ -1,61 +1,127 @@
 // 1. Require your node modules
 const express = require('express')
 const mongoose = require('mongoose')
-const bodyParser = require('bodyParser')
+const bodyParser = require('body-parser')
+const vampireData = require('./populateVampires.js')
+let app = express()
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 // 2. Require your model (and possibly your extra data source);
-const vampire = require('./models/vampire')
+const Vampire = require('./models/vampire')
 // 3. Connect your database and collection name
-mongoose.connect('mongodb://localhost:27017/mongoose-vampires', {useNewUrlParser: true})
+mongoose.connect(`mongodb://localhost:27017/vampire-app`, { useNewUrlParser: true })
+    .then(() => {
+        // console.log success message if the .connect promise returns successful (resolve)
+        console.log('Database connection successful')
+    })
+    // console.logs error message if the .connect promise returns an error (reject)
+    .catch(err => {
+        console.error(`Database connection error: ${err.message}`)
+    })
 // 4. Open your mongoose connection
+let db = mongoose.connection // <this one took me a while to figure out!!
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
 
-/////////////////////////////////////////////////
-//Write your answers to add, query, update, remove, and Hungry for More below.
 
-// Note: Remember to close your connection after you add, update, remove from your database
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// INSERT USING MONGOOSE
-// ### Add the vampire data that we gave you
+    /////////////////////////////////////////////////
 
-// ### Add some new vampire data
 
-/////////////////////////////////////////////////
-// ## QUERYING
-/////////////////////////////////////////////////
-// ### Select by comparison
+    //Write your answers to add, query, update, remove, and Hungry for More below.
 
-/////////////////////////////////////////////////
-// ### Select by exists or does not exist
+    // Note: Remember to close your connection after you add, update, remove from your database
+    /////////////////////////////////////////////////
+    /////////////////////////////////////////////////
+    // INSERT USING MONGOOSE
+    // ### Add the vampire data that we gave you
+    // Vampire.collection.insertMany(vampireData, (err, data) => {
+    //   console.log("added provided vampire data")
+    //   mongoose.connection.close();
+    // });
+    // ### Add some new vampire data
+    Vampire.create({
+        name: "Claire Redfield",
+        hair_color: "maroon",
+        eye_color: "blue",
+        dob: new Date(1979, 1, 1, 7, 47),
+        loves: ['knives', 'sherry'],
+        location: 'Raccoon City, Somewhere, US',
+        gender: 'f',
+        victims: 121
+    }, {
+        name: "Jill Valentine",
+        hair_color: "brown",
+        eye_color: "hazel",
+        dob: new Date(1974, 1, 1, 7, 47),
+        loves: ['knives', 'Chris'],
+        location: 'Raccoon City, Somewhere, US',
+        gender: 'f',
+        victims: 121
+    }, {
+        name: "Leon Kennedy",
+        hair_color: "dirty blonde",
+        eye_color: "green",
+        dob: new Date(1977, 1, 1, 7, 47),
+        loves: ['rifles', 'Claire'],
+        location: 'Raccoon City, Somewhere, US',
+        gender: 'm',
+        victims: 121
+    }, {
+        name: "Chris Redfield",
+        hair_color: "brown",
+        eye_color: "blue",
+        dob: new Date(1973, 1, 1, 7, 47),
+        loves: ['guns', 'Jill'],
+        location: 'Raccoon City, Somewhere, US',
+        gender: 'm',
+        victims: 121
+    })
+    .then(()=> {
+    	console.log("Four new vampires added successfully")
+    })
+    .catch(error => {
+    	console.log(`Error adding vampires: ${error.message}`)
+    })
 
-/////////////////////////////////////////////////
-// ### Select with OR
 
-/////////////////////////////////////////////////
-//### Select objects that match one of several values
+    /////////////////////////////////////////////////
+    // ## QUERYING
+    /////////////////////////////////////////////////
+    // ### Select by comparison
 
-/////////////////////////////////////////////////
-//### Negative Selection
+    /////////////////////////////////////////////////
+    // ### Select by exists or does not exist
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// ## REPLACE
+    /////////////////////////////////////////////////
+    // ### Select with OR
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// ## UPDATE
+    /////////////////////////////////////////////////
+    //### Select objects that match one of several values
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// ## REMOVE
+    /////////////////////////////////////////////////
+    //### Negative Selection
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
+    /////////////////////////////////////////////////
+    /////////////////////////////////////////////////
+    // ## REPLACE
 
-// ## HUNGRY FOR MORE
-/////////////////////////////////////////////////
-//## Select objects that match one of several values
+    /////////////////////////////////////////////////
+    /////////////////////////////////////////////////
+    // ## UPDATE
 
-/////////////////////////////////////////////////
-//## Negative Selection
+    /////////////////////////////////////////////////
+    /////////////////////////////////////////////////
+    // ## REMOVE
 
-/////////////////////////////////////////////////
+    /////////////////////////////////////////////////
+    /////////////////////////////////////////////////
+
+    // ## HUNGRY FOR MORE
+    /////////////////////////////////////////////////
+    //## Select objects that match one of several values
+
+    /////////////////////////////////////////////////
+    //## Negative Selection
+
+    /////////////////////////////////////////////////
+});
