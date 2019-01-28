@@ -1,13 +1,19 @@
 // 1. Require your node modules
 const mongoose = require('mongoose')
-const vampire = require('./models/vampire')
+const Vampire = require('./models/vampire')
 
 // 2. Require your model (and possibly your extra data source);
 
-// 3. Connect your database and collection name
+// let vampires = require('./populateVampires.js')
 
+// // 3. Connect your database and collection name
 
-// 4. Open your mongoose connection
+// mongoose.connect('mongodb://localhost:27017/')
+
+// // 4. Open your mongoose connection
+
+// app.use(bodyParser.urlencoded({extend: true}))
+// app.use(bodyParser.json())
 
 /////////////////////////////////////////////////
 //Write your answers to add, query, update, remove, and Hungry for More below.
@@ -19,6 +25,30 @@ const vampire = require('./models/vampire')
 // ### Add the vampire data that we gave you
 
 // ### Add some new vampire data
+
+vampire.create(
+	{
+		name: 'Joe',
+		age: 456,
+		gender: 'male'
+	},
+	{
+		name: 'Susie',
+		age: 124,
+		gender: 'female'
+	},
+	{
+		name: 'Bob',
+		age: 984,
+		gender: 'male'
+	},
+	{
+		name: 'Cheryl',
+		age: 33,
+		gender: 'female'
+	}
+)
+
 
 /////////////////////////////////////////////////
 // ## QUERYING
