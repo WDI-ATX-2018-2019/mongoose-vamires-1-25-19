@@ -85,6 +85,10 @@ vampireModel.find().or([{ loves: { 'marshmallows' }}, { victims: {$gt: 1000}}]);
 vampireModel.find().or([{ hair_color: { 'red' }}, { eye_color: { 'green'}}]);
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
+vampireModel.find().or([{ loves: { 'frilly shirtsleeves' }}, { loves: { 'frilly collars'}}]);
+vampireModel.find({ loves: { 'brooding' }})
+vampireModel.find().or([{ loves: { 'appearing innocent' }}, { loves: { 'trickery'}}, { loves: { 'lurking in rotting mansions'}}, { loves: { 'R&B music'}}]);
+
 
 /////////////////////////////////////////////////
 //### Negative Selection
