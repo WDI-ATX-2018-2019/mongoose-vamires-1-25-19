@@ -126,12 +126,28 @@ let database = mongoose.connection
 // 	console.log(vampire)
 // })
 
-Vampire.find({ $and: [ { victims: { $exists: true } }, { victims: { $gt: 1000 } } ]}).then(vampire => {
-	console.log(vampire)
-})
+// Vampire.find({ $and: [ { victims: { $exists: true } }, { victims: { $gt: 1000 } } ]}).then(vampire => {
+// 	console.log(vampire)
+// })
 
 /////////////////////////////////////////////////
 // ### Select with OR
+
+// Vampire.find( { $or: [ { location: 'New York, New York, US'}, { location: 'New Orleans, Louisiana, US'}]}).then(vampire => {
+// 	console.log(vampire)
+// })
+
+// Vampire.find( { $or: [ { loves: 'brooding' }, { loves: 'being tragic' } ]}).then(vampire => {
+// 	console.log(vampire)
+// })
+
+// Vampire.find( { $or: [ { victims: { $gt: 1000 } }, { loves: 'marshmallows' } ]}).then(vampire => {
+// 	console.log(vampire)
+// })
+
+// Vampire.find( { $or: [ { hair_color: 'red'}, { eye_color: 'green' } ]}).then(vampire => {
+// 	console.log(vampire)
+// })
 
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
