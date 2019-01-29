@@ -1,5 +1,5 @@
 let mongoose = require('mongoose');
-let vampireSchema = mongoose.Schema({
+let VampireSchema = mongoose.Schema({
 	name: {
 		type: String,
 		required: true
@@ -16,9 +16,10 @@ let vampireSchema = mongoose.Schema({
 	victims: {
 		type: Number,
 		min: 0
-	}
+	},
+	title: String
 });
 
-let vampire = mongoose.model('vampire', vampireSchema);
+let vampire = mongoose.model('vampire', VampireSchema);
 
 module.exports = vampire;
