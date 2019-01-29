@@ -1,14 +1,10 @@
 // 1. Require your node modules
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-const myDb = 'mongodb://localhost:27017/companyDb'
-let db = mongoose.connection;
+const validator = require('validator')
 // 2. Require your model (and possibly your extra data source);
 const vampires = require('./models/vampire')
 // 3. Connect your database and collection name
-
 // 4. Open your mongoose connection
-
 /////////////////////////////////////////////////
 //Write your answers to add, query, update, remove, and Hungry for More below.
 
@@ -60,3 +56,6 @@ const vampires = require('./models/vampire')
 //## Negative Selection
 
 /////////////////////////////////////////////////
+
+// module.exports = new VampireDb()
+mongoose.connect('mongodb://localhost:27017/Vampires', {useNewUrlParser: true});

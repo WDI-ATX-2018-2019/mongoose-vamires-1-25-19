@@ -1,4 +1,4 @@
-[
+let arrVampires = [
   {
     name: 'Count Chocula',
     hair_color: 'brown',
@@ -136,3 +136,4 @@
     title: 'Osiris of Sewer Rats'
   }
 ]
+module.exports = arrVampires
