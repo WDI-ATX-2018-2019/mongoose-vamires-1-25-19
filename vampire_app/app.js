@@ -2,9 +2,34 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 // 2. Require your model (and possibly your extra data source);
-const vampires = require('./models/vampire')
+const vampire = require('./models/vampires')
+let populateVampires = ('./populateVampires')
 // 3. Connect your database and collection name
-// 4. Open your mongoose connection
+//connecting to connection to string
+mongoose.connect('mongodb://localhost:27017/Vampires', { useNewUrlParser: true });
+// 4. Open your mongoose connectionvar
+// This is happening async
+db = mongoose.connection;
+// db.once('open', () => {
+//     console.log("We're online")
+//     vampire.collection.insertMany(populateVampires, (err, data) => {
+//         console.log("added provided vampire data")
+//     });
+// });
+
+db.on('open', ()=>{
+	vampire.find()
+	.or([{victims: { $gt: 500 }}, {loves: { $in: ['marshmallows']}}])
+	.then((vampires)=>{
+		console.log("success:\n", vampires)
+		mongoose.connection.close()
+	})
+	.catch((error)=>{
+		console.log("error error error!", error.name)
+		mongoose.connection.close()
+	})
+})
+
 /////////////////////////////////////////////////
 //Write your answers to add, query, update, remove, and Hungry for More below.
 
@@ -58,4 +83,3 @@ const vampires = require('./models/vampire')
 /////////////////////////////////////////////////
 
 // module.exports = new VampireDb()
-mongoose.connect('mongodb://localhost:27017/Vampires', {useNewUrlParser: true});
