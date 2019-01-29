@@ -19,10 +19,10 @@ const vampireSchema = new mongoose.Schema({
 //vampire Model
 let vampire = mongoose.model('Vampire', vampireSchema)
 
-vampire.create([{name:'viktor', gender:'m', hair: 'black'},
- {name:'samiel', gender:'m', hair: 'black'}, 
- {name:'natash',gender:'f', hair: 'black'}, 
- {name:'gloria', gender:'f', hair: 'blue'}])
+// vampire.create([{name:'viktor', gender:'m', hair: 'black'},
+//  {name:'samiel', gender:'m', hair: 'black'}, 
+//  {name:'natash',gender:'f', hair: 'black'}, 
+//  {name:'gloria', gender:'f', hair: 'blue'}])
 
 // vampire.find({gender:'f'})
 
