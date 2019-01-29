@@ -294,6 +294,63 @@ db.once('open', function() {
     /////////////////////////////////////////////////
     //### Select objects that match one of several values
 
+    // love either frilly shirtsleeves or frilly collars
+    // Vampire
+    //     .find()
+    //     .where('loves')
+    //     .in(['frilly shirtsleeves', 'frilly collars'])
+    //     .then(vampires => {
+    //         console.log("Success!\n", vampires)
+    //         db.close()
+    //     })
+    //     .catch(error => {
+    //         console.log("Error:\n", error.name)
+    //         db.close()
+    //     })
+
+
+    // love brooding
+    // Vampire
+    //     .find()
+    //     .where('loves')
+    //     .in(['brooding'])
+    //     .then(vampires => {
+    //         console.log("Success!\n", vampires)
+    //         db.close()
+    //     })
+    //     .catch(error => {
+    //         console.log("Error:\n", error.name)
+    //         db.close()
+    //     })
+
+    // love at least one of the following: appearing innocent, trickery, lurking in rotting mansions, R&B music
+    // Vampire
+    //     .find()
+    //     .where('loves')
+    //     .in(['appearing innocent', 'trickery', 'lurking in rotting mansions', 'R&B music'])
+    //     .then(vampires => {
+    //         console.log("Success!\n", vampires)
+    //         db.close()
+    //     })
+    //     .catch(error => {
+    //         console.log("Error:\n", error.name)
+    //         db.close()
+    //     })
+
+    // love fancy cloaks but not if they also love either top hats or virgin blood * Hint-You will also have to use $nin *
+    // Vampire
+    //     .find()
+    //     .where('loves')
+    //     .in(['fancy cloaks'])
+    //     .nin(['top hats', 'virgin blood'])
+    //     .then(vampires => {
+    //         console.log("Success!\n", vampires)
+    //         db.close()
+    //     })
+    //     .catch(error => {
+    //         console.log("Error:\n", error.name)
+    //         db.close()
+    //     })
     /////////////////////////////////////////////////
     //### Negative Selection
 
