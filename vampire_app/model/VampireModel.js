@@ -24,7 +24,7 @@ const VampireSchema = mongoose.Schema({
     },
     victims :{
       type : Number,
-      default : 1
+      min: 0
     }
 })
 
