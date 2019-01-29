@@ -80,17 +80,14 @@ Vampire.find({ gender: 'f' }).then(vampire => {
 	console.log('****************Females**********************');
 	logVampires(vampire);
 });
-//
 Vampire.find({ victims: { $gt: 500 } }).then(vampire => {
 	console.log('*******************Victims>500*******************');
 	logVampires(vampire);
 });
-//
 Vampire.find({ victims: { $lte: 120 } }).then(vampire => {
 	console.log('****************Victims<=120*********************');
 	logVampires(vampire);
 });
-//
 Vampire.find({ victims: { $ne: 210234 } }).then(vampire => {
 	console.log('*****************Victims!=210234*********************');
 	logVampires(vampire);
