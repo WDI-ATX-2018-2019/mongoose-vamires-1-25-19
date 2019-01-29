@@ -78,13 +78,13 @@ db.once('open', function() {
     //     victims: 121
     // })
     // .then(()=> {
-    // 	console.log("Four new vampires added successfully")
-    // 	mongoose.connection.close();
+    //  console.log("Four new vampires added successfully")
+    //  db.close()
 
     // })
     // .catch(error => {
-    // 	console.log(`Error adding vampires: ${error.message}`)
-    // 	mongoose.connection.close();
+    //  console.log(`Error adding vampires: ${error.message}`)
+    //  db.close()
     // })
 
 
@@ -93,55 +93,203 @@ db.once('open', function() {
     /////////////////////////////////////////////////
     // ### Select by comparison
 
-// Read: all the vampires that that are females
-    // Vampire.find({ gender: 'f' }, (error, vampire) => {
-    //     if (error) return handleError(error)
-    //     console.log('%s', vampire)
-    //     mongoose.connection.close();
+    // Read: all the vampires that that are females
+    // // name of collection we are searching through in db
+    // Vampire
+    // // initiating query
+    // .find()
+    // // filter query for specific key to use with .gt()
+    // .where('victims')
+    // // specify/filter min value for victims
+    // .gt(500)
+    // // make function for 'resolve' returned down the chain of Promises
+    // .then( vampires => {
+    //     console.log("Success!\nResults:\n", vampires)
+    //     // close mongoose.connection to finish query
+    //     db.close()
+    // })
+    // // make function for 'reject' returned down chain of Promises
+    // .catch( error => {
+    //     console.log("Error: ", error.name)
+    //     // close mongoose.connection to finish query
+    //     db.close()
     // })
 
-// Read: all vampires that have greater than 500 victims
-    // Vampire.find((error, vampire) => {
-    //     if (error) return handleError(error)
-    //     console.log('%s', vampire)
-    //     mongoose.connection.close();
-    // }).
-    // where('victims').
-    // gt(500)
+    // Read: all vampires that have greater than 500 victims
+    // Vampire
+    // .find()
+    // .where('victims')
+    // .gt(500)
+    // .then(vampires => {
+    //     console.log("Success!\n", vampires)
+    //     db.close()
+    // })
+    // .catch(error => {
+    //     console.log("Error:\n", error.name)
+    // })
 
-// Read: all vampires that have fewer than or equal to 150 victims
-	// Vampire.find((error, vampire) => {
-	// 	if (error) return handleError(error)
-	// 		console.log(vampire)
-	// 	mongoose.connection.close();
-	// }).
-	// where('victims').
-	// lte(150)
+    // Read: all vampires that have fewer than or equal to 150 victims
+    // Vampire
+    // .find()
+    // .where('victims')
+    // .lte(150)
+    // .then(vampires => {
+    //     console.log("Success!\n", vampires)
+    //     db.close()
+    // })
+    // .catch(error => {
+    //     console.log("Error:\n", error.name)
+    // })
 
-// Read: all vampires that have a victim count is not equal to 210234
-	// Vampire.find((error, vampire) => {
-	// 	if (error) return handleError(error)
-	// 		console.log(vampire)
-	// 	mongoose.connection.close();
-	// }).
-	// where('victims').
-	// ne(210234)
+    // Read: all vampires that have a victim count is not equal to 210234
+    // Vampire
+    // .find()
+    // .where('victims')
+    // .ne(210234)
+    // .then(vampires => {
+    //     console.log("Success!\n", vampires)
+    //     db.close()
+    // })
+    // .catch(error => {
+    //     console.log("Error:\n", error.name)
+    // })
 
-// Read: all vampires that have greater than 150 AND fewer than 500 victims
-	// Vampire.find((error, vampire) => {
-	// 	if (error) return handleError(error)
-	// 		console.log(vampire)
-	// 	mongoose.connection.close();
-	// }).
-	// where('victims').
-	// gt(150).
-	// lt(500)
+    // Read: all vampires that have greater than 150 AND fewer than 500 victims
+    // Vampire
+    // .find()
+    // .where('victims')
+    // .gt(150)
+    // .lt(500)
+    // .then(vampires => {
+    //     console.log("Success!\n", vampires)
+    //     db.close()
+    // })
+    // .catch(error => {
+    //     console.log("Error:\n", error.name)
+    // })
 
     /////////////////////////////////////////////////
     // ### Select by exists or does not exist
 
+    // have a title property
+    // Vampire
+    // .find()
+    // .where('title')
+    // .exists()
+    // .then(vampires => {
+    //     console.log("Success!\n", vampires)
+    //     db.close()
+    // })
+    // .catch(error => {
+    //     console.log("Error:\n", error.name)
+    // })
+
+    // do not have a victims property
+    // Vampire
+    // .find()
+    // .where('victims')
+    // .exists(false)
+    // .then(vampires => {
+    //     console.log("Success!\n", vampires)
+    //     db.close()
+    // })
+    // .catch(error => {
+    //     console.log("Error:\n", error.name)
+    // })
+
+    // have a title AND no victims
+    // Vampire
+    // .find()
+    // .exists('title')
+    // .exists('victims', false)
+    // .then(vampires => {
+    //     console.log("Success!\n", vampires)
+    //     db.close()
+    // })
+    // .catch(error => {
+    //     console.log("Error:\n", error.name)
+    // })
+
+    // have victims AND the victims they have are greater than 1000
+    // Vampire
+    // .find()
+    // .exists('title')
+    // .where('victims')
+    // .gt(1000)
+    // .then(vampires => {
+    //     console.log("Success!\n", vampires)
+    //     db.close()
+    // })
+    // .catch(error => {
+    //     console.log("Error:\n", error.name)
+    // })
+
     /////////////////////////////////////////////////
     // ### Select with OR
+
+    // are from New York, New York, US or New Orleans, Louisiana, US
+    // Vampire
+    //     .find()
+    //     .or([
+    //         { location: 'New York, New York, US' },
+    //         { location: 'New Orleans, Louisiana, US' }
+    //     ])
+    //     .then(vampires => {
+    //         console.log("Success:\n", vampires)
+    //         db.close()
+    //     })
+    //     .catch(error => {
+    //         console.log("Error:\n", error.name)
+    //         db.close()
+    //     })
+
+    // love brooding or being tragic
+    // Vampire
+    //     .find()
+    //     .or([{ loves: { $in: ['brooding'] } }, { loves: { $in: ['being tragic'] } }])
+    //     .then(vampires => {
+    //         console.log("Success:\n", vampires)
+    //         db.close()
+    //     })
+    //     .catch(error => {
+    //         console.log("Error:\n", error.name)
+    //         db.close()
+    //     })
+
+    // have more than 1000 victims or love marshmallows
+    // Vampire
+    //     .find()
+    //     .or([
+    //         { victims: { $gt: 1000 } },
+    //         { loves: { $in: ['marshmallows'] } }
+    //     ])
+    //     .exec() // <-- not necessary since we are using queries after find that return promises?
+    //     .then(vampires => {
+    //         console.log("Success:\n", vampires)
+    //         db.close()
+    //     })
+    //     .catch(error => {
+    //         console.log("Error:\n", error.name)
+    //         db.close()
+    //     })
+
+
+    // have red hair or green eyes
+    // Vampire
+    //     .find()
+    //     .or([
+    //         { hair_color: 'red' },
+    //         { eye_color: 'green' }
+    //     ])
+    //     .then(vampires => {
+    //         console.log("Success!\n", vampires)
+    //         db.close()
+    //     })
+    //     .catch(error => {
+    //         console.log("Error:\n", error.name)
+    //         db.close()
+    //     })
+
 
     /////////////////////////////////////////////////
     //### Select objects that match one of several values
