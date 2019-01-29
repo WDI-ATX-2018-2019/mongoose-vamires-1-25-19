@@ -1,8 +1,33 @@
 // 1. Require your node modules
 
 // 2. Require your model (and possibly your extra data source);
+const mongoose = require('mongoose');
+const server = 'localhost:27017'; 
+const databaseName = 'vampire';      
+const PORT = 3000;
+let Vampire = require('./models/vampire');
+
 
 // 3. Connect your database and collection name
+class Database {
+	constructor() {
+    this.connect()
+}
+
+	async connect() {
+	  try {
+	    const response = await mongoose.connect(`mongodb://${server}/${databaseName}`, {useNewUrlParser: true});
+	    console.log('Database connection successful');
+	  }
+	  catch(e) {
+	    console.error('Database connection error');
+	  }
+	}
+}
+
+
+
+
 
 // 4. Open your mongoose connection
 
