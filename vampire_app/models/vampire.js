@@ -28,6 +28,9 @@ let VampireSchema = mongoose.Schema({
 	},
 	dob: {
 		type: Date
+	},
+	title: {
+		type: String
 	}
 })
 
