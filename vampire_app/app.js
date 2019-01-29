@@ -152,6 +152,27 @@ let database = mongoose.connection
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
 
+// Vampire.find( { $or: [ { loves: 'frilly shirtsleeves'}, { loves: 'frilly collars' } ] }).then(vampire => {
+// 	console.log(vampire)
+// })
+
+// Vampire.find( { loves: 'brooding' }).then(vampire => {
+// 	console.log(vampire)
+// })
+
+// Vampire.find( { $or: [ { loves: 'appearing innocent'}, { loves: 'trickery'}, {loves: 'lurking in rotting mansions'}, { loves: 'R&B music' } ] }).then(vampire => {
+// 	console.log(vampire)
+// })
+
+Vampire.find( {
+	$and: [
+		{ loves: { $nin: [ 'top hats', 'virgin blood' ]}},
+		{ loves: 'fancy cloaks' }
+	]
+}).then(vampire => {
+	console.log(vampire)
+})
+
 /////////////////////////////////////////////////
 //### Negative Selection
 
