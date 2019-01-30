@@ -124,11 +124,11 @@ let newVampireData = [{
 // VampireModel.find().or([{victims:{$gt:1000}},{loves:{$in:'marshmallows'}}]).exec().then((result)=>{console.log(result)})
 // VampireModel.find().or([{eye_color: 'red'},{eye_color:'green'}]).exec().then((result)=>{console.log(res)})
 
-
-
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
-
+// VampireModel.find().or([{loves:{$in:'frilly shirtsleeves'}},{loves:{$in:'frilly collars'}}]).then((result)=>{console.log(result)})
+// VampireModel.find().or([{loves:{$in:'brooding'}}]).then((result)=>{console.log(result)})
+VampireModel.find().or([{loves:{$in:'appearing innocent'}},{loves:{$in:'trickery'}},{loves:{$in:'lurking in rotting mansions'}},{loves:{$in:'R&B music'}}]).then((result)=>{console.log(result)})
 /////////////////////////////////////////////////
 //### Negative Selection
 
