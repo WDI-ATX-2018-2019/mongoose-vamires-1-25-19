@@ -118,6 +118,13 @@ let newVampireData = [{
 
 /////////////////////////////////////////////////
 // ### Select with OR
+// VampireModel.find().or(
+//     [{ location: 'New York, New York, US' }, { location: 'New Orleans, Louisiana, US' }]).exec().then((result)=>{console.log(result)})
+// VampireModel.find().or([{loves:{$in:'brooding'}},{loves:{$in:'being tragic'}}]).exec().then((result)=>{console.log(result)})
+// VampireModel.find().or([{victims:{$gt:1000}},{loves:{$in:'marshmallows'}}]).exec().then((result)=>{console.log(result)})
+// VampireModel.find().or([{eye_color: 'red'},{eye_color:'green'}]).exec().then((result)=>{console.log(res)})
+
+
 
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
