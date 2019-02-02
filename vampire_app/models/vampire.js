@@ -21,6 +21,6 @@ const vampireSchema = new Schema ({
 	} 
 })
 
-let vampireModel = mongoose.model('vampire', vampireSchema)
+let vampireModel = mongoose.model('Vampire', vampireSchema)
 
 module.exports = vampireModel
