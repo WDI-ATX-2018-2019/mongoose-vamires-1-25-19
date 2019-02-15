@@ -20,19 +20,19 @@ db = mongoose.connection;
 //     })
 // })
 
-// db.on('open', ()=>{
-// 	vampire.find()
-// 	.where('gender')
-// 	.eq('f')
-// 	.then((vampires)=>{
-// 		console.log("success:\n", vampires)
-// 		mongoose.connection.close()
-// 	})
-// 	.catch((error)=>{
-// 		console.log("error error error!", error.name)
-// 		mongoose.connection.close()
-// 	})
-// })
+db.on('open', ()=>{
+	vampire.find()
+	.where('victims')
+	.or(150)
+	.then((vampires)=>{
+		console.log("success:\n", vampires)
+		mongoose.connection.close()
+	})
+	.catch((error)=>{
+		console.log("error error error!", error.name)
+		mongoose.connection.close()
+	})
+})
 
 // Query by OR
 // db.on('open', ()=>{
