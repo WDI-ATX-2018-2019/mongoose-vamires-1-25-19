@@ -351,8 +351,33 @@ db.once('open', function() {
     //         console.log("Error:\n", error.name)
     //         db.close()
     //     })
+
     /////////////////////////////////////////////////
     //### Negative Selection
+
+    // love ribbons but do not have brown eyes
+    Vampire
+    .find()
+    .where('loves')
+    .in(['ribbons'])
+    .where('eye_color')
+    .ne('brown')
+    .then( vampires => {
+        console.log("Success!\n", vampires)
+        db.close()
+    })
+    .catch( error => {
+        console.log("Error:\n", error.name)
+        db.close()
+    })
+
+    // .find({"eye_color": {$ne: 'brown'} })
+
+    // are not from Rome
+
+    // do not love any of the following: [fancy cloaks, frilly shirtsleeves, appearing innocent, being tragic, brooding]
+
+    // have not killed more than 200 people
 
     /////////////////////////////////////////////////
     /////////////////////////////////////////////////
