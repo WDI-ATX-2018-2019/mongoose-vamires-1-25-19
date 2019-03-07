@@ -16,7 +16,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.6.1",
+    "await": "^0.2.6",
     "chai": "^4.2.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "mongoose": "^5.4.7"
   }
 }
