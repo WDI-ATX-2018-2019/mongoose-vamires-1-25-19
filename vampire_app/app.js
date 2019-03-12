@@ -2,17 +2,20 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-const vampire = require('./models/vampire')
-const port = 6000
+const populateVampires = require('../models/vampire')
 let app = express()
 // 2. Require your model (and possibly your extra data source);
 let vampireData = require('./populateVampires.js')
 // 3. Connect your database and collection name
-mongoose.connect('mongodb://localhost:27017/VampData',{ useNewUrlParser: true })
+mongoose.connect('mongodb://localhost:27017/vampires',{ useNewUrlParser: true })
 // 4. Open your mongoosbe connection
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-database = mongoose.connection
+let database = mongoose.connection
+database.on('error',(error)=>{
+    console.log("error")
+    console.log((error))
+})
 database.on("open",()=>{
 	console.log("connected")
 })
@@ -29,7 +32,10 @@ vampire.collection.insertMany(vampireData, (err, data) => {
   mongoose.connection.close();
 });
 // ### Add some new vampire data
-let newVampires = [{
+database.on('open',()=>{
+    let vampires = [ new Vampire{
+
+ new Vampires = {
 	name: 'Jules Camarillo',
     dob: new Date(156, 7, 7, 22, 10),
     hair_color: 'red',
@@ -70,6 +76,7 @@ let newVampires = [{
     victims: 324
 	}
 ]
+vampire.create(newVampires)
 vampire.insertMany(newVampires).then( docs => {
 	console.log(docs)
 })
@@ -77,6 +84,20 @@ vampire.insertMany(newVampires).then( docs => {
 // ## QUERYING
 /////////////////////////////////////////////////
 // ### Select by comparison
+database.on('open',()=>{
+    Vampire
+    .find({victims: $gte: 1000}})
+    .exec()
+    .then((vampires)=>{
+        console.log("success")
+            for(let Vampire in vampires) {
+                console.log(vampire)
+        }
+    })
+    .catch((error)=>{
+        console.log("error",error.name)
+    })
+})
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist

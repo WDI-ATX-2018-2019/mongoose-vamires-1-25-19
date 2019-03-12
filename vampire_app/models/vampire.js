@@ -1,5 +1,8 @@
-let mongoose = require('mongoose')
-let vampireSchema = new mongoose.Schema({
+const mongoose = require('mongoose')
+
+const Schema = mongoose.Schema
+
+const vampireSchema = new Schema ({
 	name: {
 		type: String,
 		required: true
@@ -15,11 +18,11 @@ let vampireSchema = new mongoose.Schema({
 	gender: String,
 	victims: {
 		type: Number,
-		min: 0
+		min:0
 	}
 
 })
 
-let vampire = mongoose.model('vampire', vampireSchema)
+let vampireModel = mongoose.model('Vampire', vampireSchema)
 
-module.exports = vampire
+module.exports = vampireModel
