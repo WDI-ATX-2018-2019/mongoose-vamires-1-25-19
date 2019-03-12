@@ -114,11 +114,19 @@ vampireModel.find().or([{ loves: { 'frilly shirtsleeves' }}, { loves: { 'frilly 
 vampireModel.find({ loves: { 'brooding' }})
 /////////////////////////////////////////////////
 //### Negative Selection
-
+vampireModel.find($and:[{loves: 'ribbons'}, {eye_color: {$not: {'brown'}}})
+vampireModel.find({location: {$not: {'Rome'}}})
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REPLACE
-
+vampireModel.findOneAndUpdate(
+  { name: 'Claudia' },
+  { $set: { name: 'Eva' } }, 
+  { new : true }, 
+  (err, article)=>{
+    console.log(vampireModel);
+  });
+});
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## UPDATE
@@ -138,6 +146,6 @@ vampireModel.find({ loves: { 'brooding' }})
 //## Negative Selection
 
 /////////////////////////////////////////////////
-// app.listen(port, ()=>{
-// 	console.log("Onnnn Son")
-// })
+app.listen(port, ()=>{
+	console.log("Onnnn Son")
+})
