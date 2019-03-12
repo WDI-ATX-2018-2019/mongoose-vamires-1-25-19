@@ -110,7 +110,8 @@ vampireModel.find().or([{ location: { 'New York, New York, US' }}, { location: {
 vampireModel.find().or([{ loves: { 'brooding' }}, { loves: { 'being tragic'}}]);
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
-
+vampireModel.find().or([{ loves: { 'frilly shirtsleeves' }}, { loves: { 'frilly collars'}}]);
+vampireModel.find({ loves: { 'brooding' }})
 /////////////////////////////////////////////////
 //### Negative Selection
 
