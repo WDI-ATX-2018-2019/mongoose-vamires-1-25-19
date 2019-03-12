@@ -2,10 +2,10 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-const populateVampires = require('../models/vampire')
+const vampireModel = require('../models/vampire')
 let app = express()
 // 2. Require your model (and possibly your extra data source);
-let vampireData = require('./populateVampires.js')
+let vampire = require('./populateVampires.js')
 // 3. Connect your database and collection name
 mongoose.connect('mongodb://localhost:27017/vampires',{ useNewUrlParser: true })
 // 4. Open your mongoosbe connection
@@ -27,7 +27,7 @@ database.on("open",()=>{
 /////////////////////////////////////////////////
 // INSERT USING MONGOOSE
 // ### Add the vampire data that we gave you
-vampire.collection.insertMany(vampireData, (err, data) => {
+vampireModel.collection.insertMany(vampires, (err, data) => {
   console.log("added provided vampire data")
   mongoose.connection.close();
 });
@@ -101,10 +101,13 @@ database.on('open',()=>{
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
-
+vampireModel.find({title: {$exists: true}})
+            .find({victims: {$exists: false}})
+.find({title: {$exists: true}} && {victims: {$exists: false}})
 /////////////////////////////////////////////////
 // ### Select with OR
-
+vampireModel.find().or([{ location: { 'New York, New York, US' }}, { location: { 'New Orleans, Louisiana, US'}}]);
+vampireModel.find().or([{ loves: { 'brooding' }}, { loves: { 'being tragic'}}]);
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
 
