@@ -1,10 +1,52 @@
 // 1. Require your node modules
-
+const mongoose = require('mongoose')
+const validator = require('validator')
 // 2. Require your model (and possibly your extra data source);
-
+const vampire = require('./models/vampires')
+let populateVampires = require ('./populateVampires')
 // 3. Connect your database and collection name
+//connecting to connection to string
+mongoose.connect('mongodb://localhost:27017/Vampires', { useNewUrlParser: true });
+// 4. Open your mongoose connectionvar
+// This is happening async
+db = mongoose.connection;
 
-// 4. Open your mongoose connection
+//Add vampires to database
+// db.once('open', () => {
+//     vampire.collection.insertMany(populateVampires, (err, data) => {
+//         console.log("added provided vampire")
+//           mongoose.connection.close();
+
+//     })
+// })
+
+db.on('open', ()=>{
+	vampire.find()
+	.where('victims')
+	.or(150)
+	.then((vampires)=>{
+		console.log("success:\n", vampires)
+		mongoose.connection.close()
+	})
+	.catch((error)=>{
+		console.log("error error error!", error.name)
+		mongoose.connection.close()
+	})
+})
+
+// Query by OR
+// db.on('open', ()=>{
+// 	vampire.find()
+// 	.or([{victims: { $gt: 500 }}, {loves: { $in: ['marshmallows']}}])
+// 	.then((vampires)=>{
+// 		console.log("success:\n", vampires)
+// 		mongoose.connection.close()
+// 	})
+// 	.catch((error)=>{
+// 		console.log("error error error!", error.name)
+// 		mongoose.connection.close()
+// 	})
+// })
 
 /////////////////////////////////////////////////
 //Write your answers to add, query, update, remove, and Hungry for More below.
@@ -57,3 +99,5 @@
 //## Negative Selection
 
 /////////////////////////////////////////////////
+
+// module.exports = new VampireDb()
